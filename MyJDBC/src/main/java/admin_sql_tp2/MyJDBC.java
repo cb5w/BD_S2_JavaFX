@@ -102,6 +102,33 @@ public class MyJDBC {
 	      resultSelect.close();
 		return result;
 	}
+
+	public String executePreparedReadQuery(String query, Object... parameters) throws SQLException {
+		if (this.m_dbConnection==null) {
+			return "Veuillez d'abord vous connecter a une base de donnees";
+		}
+
+		try (PreparedStatement preparedStatement = this.m_dbConnection.prepareStatement(query,
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY)) {
+			setParameters(preparedStatement, parameters);
+			try (ResultSet resultSelect = preparedStatement.executeQuery()) {
+				return formatResultSet(resultSelect);
+			}
+		}
+	}
+
+	public String executePreparedWriteQuery(String query, Object... parameters) throws SQLException {
+		if (this.m_dbConnection==null) {
+			return "Veuillez d'abord vous connecter a une base de donnees";
+		}
+
+		try (PreparedStatement preparedStatement = this.m_dbConnection.prepareStatement(query)) {
+			setParameters(preparedStatement, parameters);
+			int linesNumber = preparedStatement.executeUpdate();
+			return "La requete a modifie : " + linesNumber + " ligne(s)";
+		}
+	}
 	
 	public String executeWriteQuery(String query) throws SQLException {
 		  String result;
@@ -113,6 +140,41 @@ public class MyJDBC {
 		  }
 	      int linesNumber = this.m_state.executeUpdate(query);
 	      result="La requete a modifie : " + linesNumber + " ligne(s)";
+
+		return result;
+	}
+
+	private void setParameters(PreparedStatement preparedStatement, Object... parameters) throws SQLException {
+		for (int i = 0; i < parameters.length; i++) {
+			preparedStatement.setObject(i + 1, parameters[i]);
+		}
+	}
+
+	private String formatResultSet(ResultSet resultSelect) throws SQLException {
+		ResultSetMetaData resultMeta = resultSelect.getMetaData();
+		int rowNumbers = 0;
+		while (resultSelect.next()) {
+			++rowNumbers;
+		}
+		resultSelect.beforeFirst();
+
+		String result = "La requete retourne " + resultMeta.getColumnCount()
+				+ " colonne(s) et " + rowNumbers + " ligne(s)\n";
+
+		if (resultMeta.getColumnCount() != 0 && rowNumbers != 0) {
+			for (int i = 1; i <= resultMeta.getColumnCount(); ++i) {
+				result += resultMeta.getColumnName(i).toUpperCase() + "\t|";
+			}
+			result += "\n";
+
+			while(resultSelect.next()) {
+				for (int i = 1; i <= resultMeta.getColumnCount(); ++i) {
+					Object value = resultSelect.getObject(i);
+					result += (value == null ? "NULL" : value.toString()) + "\t|";
+				}
+				result += "\n";
+			}
+		}
 
 		return result;
 	}

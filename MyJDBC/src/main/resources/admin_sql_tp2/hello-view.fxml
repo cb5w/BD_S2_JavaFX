@@ -5,15 +5,54 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_sql_tp2.MyController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_sql_tp2.MyController">
    <children>
-      <Button fx:id="myConnexionButton" layoutX="408.0" layoutY="57.0" mnemonicParsing="false" onAction="#connexionPressEvent" text="Connexion" />
-      <Button fx:id="myQueryButton" layoutX="408.0" layoutY="123.0" mnemonicParsing="false" onAction="#executionPressEvent" text="Execution" />
-      <Label fx:id="myResultLabel" layoutX="184.0" layoutY="207.0" text="Résultat" />
-      <Label fx:id="myConnexionLabel" layoutX="500.0" layoutY="61.0" text="Pas connecté" />
-      <TextField fx:id="myIdentityTextField" layoutX="69.0" layoutY="66.0" promptText="Identité" />
-      <TextField fx:id="myPasswordTextField" layoutX="243.0" layoutY="66.0" promptText="Mot de passe" />
-      <TextField fx:id="myQueryTextField" layoutX="67.0" layoutY="123.0" prefHeight="25.0" prefWidth="319.0" promptText="Requête SELECT" />
+      <Label layoutX="24.0" layoutY="18.0" text="SAE 2.04 - Mission 3" />
+      <Label layoutX="24.0" layoutY="56.0" text="Identifiant SQL Server" />
+      <TextField fx:id="myIdentityTextField" layoutX="160.0" layoutY="52.0" prefWidth="170.0" promptText="login_enseignant" />
+      <Label layoutX="350.0" layoutY="56.0" text="Mot de passe" />
+      <TextField fx:id="myPasswordTextField" layoutX="450.0" layoutY="52.0" prefWidth="170.0" promptText="Enseignant123!" />
+      <Button layoutX="650.0" layoutY="51.0" mnemonicParsing="false" onAction="#connexionPressEvent" prefWidth="110.0" text="Connexion" />
+      <Label fx:id="myConnexionLabel" layoutX="790.0" layoutY="56.0" text="Pas connecte" />
+
+      <Label layoutX="24.0" layoutY="108.0" text="Consultations" />
+      <Button layoutX="24.0" layoutY="142.0" mnemonicParsing="false" onAction="#allAbsencesPressEvent" prefWidth="190.0" text="Absences et retards" />
+      <Button layoutX="230.0" layoutY="142.0" mnemonicParsing="false" onAction="#exportViewPressEvent" prefWidth="190.0" text="Vue export absences" />
+
+      <Label layoutX="24.0" layoutY="196.0" text="INE etudiant" />
+      <TextField fx:id="myIneTextField" layoutX="120.0" layoutY="192.0" prefWidth="170.0" promptText="1234567890A" />
+      <Button layoutX="310.0" layoutY="192.0" mnemonicParsing="false" onAction="#studentGroupsPressEvent" prefWidth="170.0" text="Groupes etudiant" />
+
+      <Label layoutX="24.0" layoutY="244.0" text="ID seance" />
+      <TextField fx:id="mySeanceTextField" layoutX="120.0" layoutY="240.0" prefWidth="90.0" promptText="1" />
+      <Button layoutX="230.0" layoutY="240.0" mnemonicParsing="false" onAction="#seancePresencePressEvent" prefWidth="210.0" text="Presences seance" />
+
+      <Label layoutX="24.0" layoutY="292.0" text="ID enseignant" />
+      <TextField fx:id="myEnseignantTextField" layoutX="120.0" layoutY="288.0" prefWidth="90.0" promptText="2" />
+      <Button layoutX="230.0" layoutY="288.0" mnemonicParsing="false" onAction="#teacherSeancesPressEvent" prefWidth="210.0" text="Seances enseignant" />
+
+      <Label layoutX="560.0" layoutY="108.0" text="Saisie presence" />
+      <Label layoutX="560.0" layoutY="148.0" text="Etat presence" />
+      <TextField fx:id="myEtatPresenceTextField" layoutX="670.0" layoutY="144.0" prefWidth="180.0" promptText="absent" />
+      <Button layoutX="870.0" layoutY="144.0" mnemonicParsing="false" onAction="#addPresencePressEvent" prefWidth="130.0" text="Ajouter" />
+      <Button layoutX="870.0" layoutY="190.0" mnemonicParsing="false" onAction="#updatePresencePressEvent" prefWidth="130.0" text="Modifier" />
+
+      <Label layoutX="560.0" layoutY="244.0" text="Nouvel etudiant" />
+      <Label layoutX="560.0" layoutY="292.0" text="Nom" />
+      <TextField fx:id="myNomTextField" layoutX="650.0" layoutY="288.0" prefWidth="160.0" promptText="Dupuis" />
+      <Label layoutX="830.0" layoutY="292.0" text="Prenom" />
+      <TextField fx:id="myPrenomTextField" layoutX="890.0" layoutY="288.0" prefWidth="120.0" promptText="Romain" />
+      <Label layoutX="560.0" layoutY="340.0" text="Email" />
+      <TextField fx:id="myEmailTextField" layoutX="650.0" layoutY="336.0" prefWidth="230.0" promptText="romain.dupuis@etud.univ-lemans.fr" />
+      <Label layoutX="560.0" layoutY="388.0" text="Telephone" />
+      <TextField fx:id="myTelephoneTextField" layoutX="650.0" layoutY="384.0" prefWidth="130.0" promptText="0611223344" />
+      <Button layoutX="800.0" layoutY="384.0" mnemonicParsing="false" onAction="#addStudentPressEvent" prefWidth="200.0" text="Ajouter etudiant" />
+
+      <Label layoutX="560.0" layoutY="436.0" text="ID groupe" />
+      <TextField fx:id="myGroupeTextField" layoutX="650.0" layoutY="432.0" prefWidth="90.0" promptText="1" />
+      <Button layoutX="760.0" layoutY="432.0" mnemonicParsing="false" onAction="#addStudentGroupPressEvent" prefWidth="240.0" text="Affecter au groupe" />
+
+      <Label layoutX="24.0" layoutY="500.0" text="Resultat" />
+      <Label fx:id="myResultLabel" layoutX="24.0" layoutY="528.0" prefHeight="160.0" prefWidth="990.0" text="Connectez-vous puis choisissez une action." wrapText="true" />
    </children>
 </Pane>

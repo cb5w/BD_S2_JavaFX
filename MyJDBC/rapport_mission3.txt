@@ -1,0 +1,18 @@
+Rapport mission 3 - SAE 2.04
+
+L'application JavaFX se connecte a la base SQL Server SAE204 avec l'API JDBC.
+Elle couvre les regles de gestion liees a la consultation des formations, groupes,
+seances, presences et absences, ainsi que les droits metier prevus pour les roles
+secretaire, enseignant et directeur des etudes.
+
+Fonctionnalites implementees :
+- consultation des absences et retards depuis la vue vue_absences ;
+- consultation de la vue complete des absences pour l'export CSV ;
+- consultation des groupes d'un etudiant a partir de son INE ;
+- consultation des presences d'une seance ;
+- consultation des seances d'un enseignant ;
+- ajout et mise a jour d'une presence dans PARTICIPER ;
+- ajout d'un etudiant et affectation a un groupe.
+
+L'interface respecte la contrainte de la mission 3 : elle utilise uniquement des
+Label, TextField et Button pour les composants visibles de l'application.
