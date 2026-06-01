@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_sql_tp2.MyController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_sql_tp2.MyController">
    <children>
       <Label layoutX="24.0" layoutY="18.0" text="SAE 2.04 - Mission 3" />
       <Label layoutX="24.0" layoutY="56.0" text="Identifiant SQL Server" />
@@ -36,21 +34,6 @@
       <TextField fx:id="myEtatPresenceTextField" layoutX="670.0" layoutY="144.0" prefWidth="180.0" promptText="absent" />
       <Button layoutX="870.0" layoutY="144.0" mnemonicParsing="false" onAction="#addPresencePressEvent" prefWidth="130.0" text="Ajouter" />
       <Button layoutX="870.0" layoutY="190.0" mnemonicParsing="false" onAction="#updatePresencePressEvent" prefWidth="130.0" text="Modifier" />
-
-      <Label layoutX="560.0" layoutY="244.0" text="Nouvel etudiant" />
-      <Label layoutX="560.0" layoutY="292.0" text="Nom" />
-      <TextField fx:id="myNomTextField" layoutX="650.0" layoutY="288.0" prefWidth="160.0" promptText="Dupuis" />
-      <Label layoutX="830.0" layoutY="292.0" text="Prenom" />
-      <TextField fx:id="myPrenomTextField" layoutX="890.0" layoutY="288.0" prefWidth="120.0" promptText="Romain" />
-      <Label layoutX="560.0" layoutY="340.0" text="Email" />
-      <TextField fx:id="myEmailTextField" layoutX="650.0" layoutY="336.0" prefWidth="230.0" promptText="romain.dupuis@etud.univ-lemans.fr" />
-      <Label layoutX="560.0" layoutY="388.0" text="Telephone" />
-      <TextField fx:id="myTelephoneTextField" layoutX="650.0" layoutY="384.0" prefWidth="130.0" promptText="0611223344" />
-      <Button layoutX="800.0" layoutY="384.0" mnemonicParsing="false" onAction="#addStudentPressEvent" prefWidth="200.0" text="Ajouter etudiant" />
-
-      <Label layoutX="560.0" layoutY="436.0" text="ID groupe" />
-      <TextField fx:id="myGroupeTextField" layoutX="650.0" layoutY="432.0" prefWidth="90.0" promptText="1" />
-      <Button layoutX="760.0" layoutY="432.0" mnemonicParsing="false" onAction="#addStudentGroupPressEvent" prefWidth="240.0" text="Affecter au groupe" />
 
       <Label layoutX="24.0" layoutY="500.0" text="Resultat" />
       <Label fx:id="myResultLabel" layoutX="24.0" layoutY="528.0" prefHeight="160.0" prefWidth="990.0" text="Connectez-vous puis choisissez une action." wrapText="true" />

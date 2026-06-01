@@ -12,7 +12,7 @@ public class MyApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MyApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("SAE 2.04 - Mission 3");
+        stage.setTitle("SAE 2.04 - Interface professeurs");
         stage.setScene(scene);
         stage.show();
     }

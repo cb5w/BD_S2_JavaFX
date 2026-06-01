@@ -48,8 +48,12 @@ public class MyController {
     @FXML
     private Label myResultLabel;
 
+    //private MyJDBC myJDBC = new MyJDBC("org.h2.Driver",
+    //      "jdbc:h2:./data/database/sae204;MODE=MSSQLServer;INIT=RUNSCRIPT FROM './data/script/sae204_H2.sql'");
+
+    // Configuration SQL Server pour les postes de l'IUT :
     private MyJDBC myJDBC = new MyJDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-            "jdbc:sqlserver://localhost:1433;Database=SAE204;trustServerCertificate=true");
+             "jdbc:sqlserver://localhost:1433;Database=SAE204;trustServerCertificate=true");
 
     private boolean connected = false;
 
