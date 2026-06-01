@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -29,11 +28,20 @@
       <TextField fx:id="myEnseignantTextField" layoutX="120.0" layoutY="288.0" prefWidth="90.0" promptText="2" />
       <Button layoutX="230.0" layoutY="288.0" mnemonicParsing="false" onAction="#teacherSeancesPressEvent" prefWidth="210.0" text="Seances enseignant" />
 
+      <!-- Saisie presence -->
       <Label layoutX="560.0" layoutY="108.0" text="Saisie presence" />
-      <Label layoutX="560.0" layoutY="148.0" text="Etat presence" />
-      <TextField fx:id="myEtatPresenceTextField" layoutX="670.0" layoutY="144.0" prefWidth="180.0" promptText="absent" />
-      <Button layoutX="870.0" layoutY="144.0" mnemonicParsing="false" onAction="#addPresencePressEvent" prefWidth="130.0" text="Ajouter" />
-      <Button layoutX="870.0" layoutY="190.0" mnemonicParsing="false" onAction="#updatePresencePressEvent" prefWidth="130.0" text="Modifier" />
+
+      <Label layoutX="560.0" layoutY="148.0" text="INE etudiant" />
+      <TextField fx:id="myInePresenceTextField" layoutX="670.0" layoutY="144.0" prefWidth="170.0" promptText="1234567890A" />
+
+      <Label layoutX="560.0" layoutY="196.0" text="ID seance" />
+      <TextField fx:id="mySeancePresenceTextField" layoutX="670.0" layoutY="192.0" prefWidth="90.0" promptText="1" />
+
+      <Label layoutX="560.0" layoutY="244.0" text="Etat presence" />
+      <TextField fx:id="myEtatPresenceTextField" layoutX="670.0" layoutY="240.0" prefWidth="180.0" promptText="absent" />
+
+      <Button layoutX="870.0" layoutY="192.0" mnemonicParsing="false" onAction="#addPresencePressEvent" prefWidth="130.0" text="Ajouter" />
+      <Button layoutX="870.0" layoutY="240.0" mnemonicParsing="false" onAction="#updatePresencePressEvent" prefWidth="130.0" text="Modifier" />
 
       <Label layoutX="24.0" layoutY="500.0" text="Resultat" />
       <Label fx:id="myResultLabel" layoutX="24.0" layoutY="528.0" prefHeight="160.0" prefWidth="990.0" text="Connectez-vous puis choisissez une action." wrapText="true" />

@@ -34,6 +34,12 @@ public class MyController {
     private TextField myGroupeTextField;
 
     @FXML
+    private TextField myInePresenceTextField;
+
+    @FXML
+    private TextField mySeancePresenceTextField;
+
+    @FXML
     private TextField myNomTextField;
 
     @FXML
@@ -44,6 +50,23 @@ public class MyController {
 
     @FXML
     private TextField myTelephoneTextField;
+
+    @FXML
+    void addPresencePressEvent(ActionEvent event) {
+        executePreparedWrite("""
+            INSERT INTO PARTICIPER (INE_Etudiant, ID_Seance, Etat_Presence)
+            VALUES (?, ?, ?)
+            """, myInePresenceTextField.getText(), parseInteger(mySeancePresenceTextField), myEtatPresenceTextField.getText());
+    }
+
+    @FXML
+    void updatePresencePressEvent(ActionEvent event) {
+        executePreparedWrite("""
+            UPDATE PARTICIPER
+            SET Etat_Presence = ?
+            WHERE INE_Etudiant = ? AND ID_Seance = ?
+            """, myEtatPresenceTextField.getText(), myInePresenceTextField.getText(), parseInteger(mySeancePresenceTextField));
+    }
 
     @FXML
     private Label myResultLabel;
@@ -115,23 +138,6 @@ public class MyController {
                 WHERE s.ID_Enseignant = ?
                 ORDER BY s.Date_Seance, s.Heure_Seance
                 """, parseInteger(myEnseignantTextField));
-    }
-
-    @FXML
-    void addPresencePressEvent(ActionEvent event) {
-        executePreparedWrite("""
-                INSERT INTO PARTICIPER (INE_Etudiant, ID_Seance, Etat_Presence)
-                VALUES (?, ?, ?)
-                """, myIneTextField.getText(), parseInteger(mySeanceTextField), myEtatPresenceTextField.getText());
-    }
-
-    @FXML
-    void updatePresencePressEvent(ActionEvent event) {
-        executePreparedWrite("""
-                UPDATE PARTICIPER
-                SET Etat_Presence = ?
-                WHERE INE_Etudiant = ? AND ID_Seance = ?
-                """, myEtatPresenceTextField.getText(), myIneTextField.getText(), parseInteger(mySeanceTextField));
     }
 
     @FXML
