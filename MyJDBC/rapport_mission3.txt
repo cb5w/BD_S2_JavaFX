@@ -1,18 +1,31 @@
-Rapport mission 3 - SAE 2.04
+Rapport de mission — SAé 2.0.4
+Exploitation d'une base de données
 
-L'application JavaFX se connecte a la base SQL Server SAE204 avec l'API JDBC.
-Elle couvre les regles de gestion liees a la consultation des formations, groupes,
-seances, presences et absences, ainsi que les droits metier prevus pour les roles
-secretaire, enseignant et directeur des etudes.
+Règles de gestion couvertes
+Règle 1 — Lecture de l'ensemble des données
+Un enseignant connecté peut consulter l'ensemble des données de la base :
+Absences et retards : affiche toutes les participations dont l'état est "absent", "absence excusée", "absence justifiée" ou "en retard".
+Vue export absences : affiche l'intégralité des participations avec les informations complètes (étudiant, groupe, discipline, séance, état de présence).
+Groupes d'un étudiant : affiche les groupes auxquels appartient un étudiant à partir de son INE.
+Présences d'une séance : affiche la liste des étudiants et leur état de présence pour une séance donnée.
+Séances d'un enseignant : affiche toutes les séances associées à un enseignant à partir de son identifiant.
 
-Fonctionnalites implementees :
-- consultation des absences et retards depuis la vue vue_absences ;
-- consultation de la vue complete des absences pour l'export CSV ;
-- consultation des groupes d'un etudiant a partir de son INE ;
-- consultation des presences d'une seance ;
-- consultation des seances d'un enseignant ;
-- ajout et mise a jour d'une presence dans PARTICIPER ;
-- ajout d'un etudiant et affectation a un groupe.
+Règle 2 — Écriture sur les séances et les états de présence
+Un enseignant peut modifier uniquement les données de présence et de séance :
+Ajouter une présence : enregistre un nouvel état de présence pour un étudiant à une séance (INSERT dans PARTICIPER).
+Modifier une présence : met à jour l'état de présence d'un étudiant pour une séance existante (UPDATE dans PARTICIPER).
 
-L'interface respecte la contrainte de la mission 3 : elle utilise uniquement des
-Label, TextField et Button pour les composants visibles de l'application.
+Connexion à l'application
+L'application utilise une connexion JDBC vers SQL Server. Les identifiants de connexion sont les suivants :
+
+Enseignant : login_enseignant / Enseignant123!
+Secrétaire : login_secretaire / Secretaire123!
+Directeur : login_directeur / Directeur123!
+
+La chaîne de connexion utilisée est :
+jdbc:sqlserver://localhost:1433;Database=SAE204;trustServerCertificate=true
+Les droits sont gérés côté base de données via des rôles SQL Server :
+
+Le rôle enseignant dispose d'un accès en lecture sur toutes les tables et en écriture uniquement sur SEANCE et PARTICIPER.
+Le rôle secretaire dispose d'un accès en lecture sur FORMATION et DISCIPLINE (via des vues) et en lecture/écriture sur tout le reste.
+Le rôle directeur_etudes dispose d'un accès en lecture sur FORMATION (via une vue) et en lecture/écriture sur tout le reste.
